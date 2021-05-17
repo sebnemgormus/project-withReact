@@ -30,6 +30,16 @@ class App extends React.Component {
         ]
     }
 
+
+    deleteMovie = (movie) => {
+        const newMovieList  = this.state.movies.filter(
+            m => m.id !== movie.id
+        );
+
+        this.setState({
+            movies : newMovieList
+        })
+    }
     render() {
         return (
             <div className = "container">
@@ -39,7 +49,9 @@ class App extends React.Component {
                     </div>
                 </div>
                 <MovieList
-                    movies = {this.state.movies}/>
+                    movies = {this.state.movies}
+                    deleteMovieProp = {this.deleteMovie}
+                />
             </div>
         )
     }
