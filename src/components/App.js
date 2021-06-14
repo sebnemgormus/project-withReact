@@ -41,6 +41,11 @@ class App extends React.Component {
         }))
     }
 
+    editMovie = async (id, updatedMovie) => {
+        await axios.put(`http://localhost:3002/movies/${id}`, updatedMovie)
+
+    }
+
     render() {
 
         let filteredMovies = this.state.movies.filter(
@@ -89,7 +94,21 @@ class App extends React.Component {
 
                     </Route>
 
-                    <Route path="/edit/:id" component={EditMovie} />
+                    <Route path="/edit/:id" render={(props) => (
+
+                        <EditMovie
+                            {...props}
+                            onEditMovie = {(id, movie) => {
+                                this.editMovie(id, movie)
+
+                            }
+                            }
+
+                        />
+                    )}>
+
+                    </Route>
+
                 </Switch>
                 </div>
             </Router>
