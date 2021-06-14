@@ -48,6 +48,7 @@ class EditMovie extends React.Component {
             imageURL: imageURL
         }
         this.props.onEditMovie(id, updatedMovie);
+        this.props.history.push('/');
     }
 
 
@@ -100,7 +101,7 @@ class EditMovie extends React.Component {
                             ></textarea>
                         </div>
                     </div>
-                    <input type="submit" className="btn btn-danger btn-block" value="Add Movie"/>
+                    <input type="submit" className="btn btn-danger btn-block" value="Edit Movie"/>
                 </form>
             </div>
         )
