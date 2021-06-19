@@ -14,7 +14,11 @@ class App extends React.Component {
         searchQuery : ""
 
     }
-    async componentDidMount() {
+    componentDidMount() {
+        this.getMovies();
+    }
+
+    async getMovies() {
         const response = await axios.get("http://localhost:3002/movies");
         this.setState({movies : response.data})
     }
@@ -43,7 +47,7 @@ class App extends React.Component {
 
     editMovie = async (id, updatedMovie) => {
         await axios.put(`http://localhost:3002/movies/${id}`, updatedMovie)
-
+        this.getMovies();
     }
 
     render() {
